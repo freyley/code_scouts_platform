@@ -151,3 +151,6 @@ LOGGING = {
         },
     }
 }
+
+
+TEST_RUNNER='discover_runner.DiscoverRunner'
