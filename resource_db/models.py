@@ -10,6 +10,9 @@ class LearningResource(models.Model):
     cost = models.CharField(max_length=255)
     content_format = models.CharField(max_length=511, blank=True)
 
+    def __unicode__(self):
+        return u"Learning Resource: %s" % (self.title,)
+
 
 def importFromCSV(input_file):
     """Create LearningResources from a CSV file.
