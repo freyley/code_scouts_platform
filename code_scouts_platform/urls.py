@@ -5,6 +5,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'code_scouts_platform.views.home', name='home'),
     # url(r'^code_scouts_platform/', include('code_scouts_platform.foo.urls')),
+    ('^events/', include('events.urls'))
 )
 
 if settings.DEBUG:
