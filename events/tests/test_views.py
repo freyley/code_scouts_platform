@@ -5,4 +5,4 @@ from django.test import TestCase
 class CalendarViewTest(TestCase):
     def test_calendarView(self):
     	view = self.client.get('/events/calendar')
-    	self.assertEqual(view.status_code, 200)
+    	self.assertContains(view, 'Calendar', status_code=200)

@@ -3,5 +3,5 @@
 from django.http import HttpResponse
 
 def CalendarView(request):
-	return HttpResponse("Test Calednar View")
+	return HttpResponse("Test Calendar View")
 
