@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
 
-class CalendarView(object):
-    pass
+from django.http import HttpResponse
+
+def CalendarView(request):
+	return HttpResponse("Test Calednar View")
+
