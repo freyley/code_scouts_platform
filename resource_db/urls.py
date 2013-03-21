@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 
-from .views import ResourceList
+from .views import resource_list
 
 urlpatterns = patterns('',
-    url('^$', ResourceList)
+    url('^$', resource_list)
 )

@@ -1,5 +1,11 @@
-# Create your views here.
+from django.shortcuts import render
+from resource_db.models import LearningResource
 
-class ResourceList(object):
-    def __init__(self):
-        raise NotImplementedError("HIYA!")
+# Making a function-based view to begin with, for testing purposes. 
+
+def resource_list(request):
+	resources = LearningResource.objects.all()
+
+	return render(request, 'resource_db/resources.html', {'resources': resources})
+
+

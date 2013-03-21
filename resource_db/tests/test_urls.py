@@ -12,4 +12,4 @@ from .. import views
 class TestURLs(TestCase):
     def test_resourceList(self):
         match = resolve('/', urls)
-        self.assertEqual(match.func, views.ResourceList)
+        self.assertEqual(match.func, views.resource_list)
