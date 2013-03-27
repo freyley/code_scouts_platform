@@ -7,5 +7,5 @@ from django.conf.urls import patterns, url
 from .views import calendar_view
 
 urlpatterns = patterns('',
-    url('^calendar$', calendar_view)
+    url('^calendar$', calendar_view, name='calendar')
 )
