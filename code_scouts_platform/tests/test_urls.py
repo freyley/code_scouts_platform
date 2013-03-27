@@ -14,4 +14,4 @@ class TestURLs(TestCase):
         # but I don't know how to test for "is dispatched to events.urls."
         import events.views
         match = resolve('/events/calendar', urls)
-        self.assertEqual(match.func, events.views.CalendarView)
+        self.assertEqual(match.func, events.views.calendar_view)

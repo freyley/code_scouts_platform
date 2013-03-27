@@ -3,5 +3,5 @@
 from django.shortcuts import render
 
 
-def CalendarView(request):
+def calendar_view(request):
     return render(request, 'events/calendar.html')
