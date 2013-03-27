@@ -155,3 +155,7 @@ LOGGING = {
 
 
 TEST_RUNNER='discover_runner.DiscoverRunner'
+
+# Configuration for Code Scouts "Events" app:
+CS_GOOGLE_CALENDAR = \
+    'codescouts.org_oopaaknq7hjterl84hgpv28t8g%40group.calendar.google.com'
