@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'resource_db',
+    'events',
     'south',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
@@ -154,3 +155,7 @@ LOGGING = {
 
 
 TEST_RUNNER='discover_runner.DiscoverRunner'
+
+# Configuration for Code Scouts "Events" app:
+CS_GOOGLE_CALENDAR = \
+    'codescouts.org_oopaaknq7hjterl84hgpv28t8g%40group.calendar.google.com'
