@@ -12,4 +12,4 @@ from .. import views
 class TestURLs(TestCase):
     def test_resourceList(self):
         match = resolve('/calendar', urls)
-        self.assertEqual(match.func, views.CalendarView)
+        self.assertEqual(match.func, views.calendar_view)

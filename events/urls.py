@@ -4,8 +4,8 @@
 
 from django.conf.urls import patterns, url
 
-from .views import CalendarView
+from .views import calendar_view
 
 urlpatterns = patterns('',
-    url('^calendar$', CalendarView)
+    url('^calendar$', calendar_view, name='calendar')
 )
