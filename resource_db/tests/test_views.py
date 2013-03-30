@@ -1,5 +1,6 @@
 from django.test import TestCase
 from resource_db.models import LearningResource
+from resource_db.views import resource_list
 
 class ResourceDBTest(TestCase):
     def setUp(self):
@@ -9,14 +10,14 @@ class ResourceDBTest(TestCase):
         LearningResource.objects.get_or_create(
                 url='www.udemy.com', title='Second Test Title', tags='python, web dev',
                 description='Online Python course', cost='$12', content_format='lectures')
-        self.view = self.client.get('/resources/')
+        self.response = resource_list("Fake Request")
 
     def test_resource_list(self):
-        self.assertContains(self.view, 'New Title')
-        self.assertContains(self.view, 'Second Test Title')
+        self.assertContains(self.response, 'New Title')
+        self.assertContains(self.response, 'Second Test Title')
 
     def test_resource_db_view(self):
-        self.assertContains(self.view, 'Resource List', status_code=200)
+        self.assertContains(self.response, 'Resource List', status_code=200)
 
     def test_resource_db_template(self):
-        self.assertTemplateUsed(self.view, 'resource_db/resources.html')
+        self.assertTemplateUsed(self.response, 'resource_db/resources.html')
