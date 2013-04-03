@@ -122,8 +122,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'social_auth',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.browserid.BrowserIDBackend',
+    # 'social_auth.backends.contrib.github.GithubBackend',
+    # 'social_auth.backends.OpenIDBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
+)
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
