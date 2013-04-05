@@ -7,3 +7,4 @@ ipdb==0.7
 ipython==0.13.1
 wsgiref==0.1.2
 django-social-auth==0.7.22
+filepath==0.1
