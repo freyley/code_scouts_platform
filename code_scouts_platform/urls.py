@@ -4,6 +4,7 @@ from django.conf import settings
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'code_scouts_platform.views.home', name='home'),
+    ('^accounts/login/', 'code_scouts_platform.views.login'),
     ('^events/', include('events.urls', namespace="events")),
     ('^resources/', include('resource_db.urls')),
     ('', include('social_auth.urls')),
