@@ -5,8 +5,7 @@
 from unittest import TestCase
 from django.core.urlresolvers import resolve
 
-from .. import urls
-from .. import views
+from resource_db import urls, views
 
 
 class TestURLs(TestCase):

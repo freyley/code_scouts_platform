@@ -1,5 +1,5 @@
 from django.test import TestCase, RequestFactory
-from ..views import login
+from code_scouts_platform.views import login
 
 class LoginViewTest(TestCase):
 

@@ -4,7 +4,7 @@
 from unittest import TestCase
 from django.core.urlresolvers import resolve
 
-from .. import urls, views
+from code_scouts_platform import urls, views
 
 
 class TestURLs(TestCase):
