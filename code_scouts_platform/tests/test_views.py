@@ -18,3 +18,18 @@ class LoginViewTest(TestCase):
             {REDIRECT_FIELD_NAME: redirect_to})
         response = login(self.request)
         self.assertContains(response, redirect_to)
+
+
+    def test_offsite_redirects_disallowed(self):
+        # The framework ought to make sure the auth mechanism doesn't allow
+        # people to craft URLs that will send users to arbitrary places
+        # through our site, but there's a hole:
+        # https://github.com/omab/django-social-auth/issues/676
+        # so we'll do this check ourselves.
+        redirect_to = 'http://example.com/hackme'
+        self.request = RequestFactory().get('/login',
+            {REDIRECT_FIELD_NAME: redirect_to})
+        response = login(self.request)
+        self.assertNotContains(response, redirect_to)
+        # FIXME: the logger that gets run here prints crappy
+        #     "no handlers could be found" messages during the test run.
