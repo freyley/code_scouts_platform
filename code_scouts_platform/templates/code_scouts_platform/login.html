@@ -28,6 +28,9 @@
     <!-- BrowserID results form -->
     <form id="browserid_form" method="post" action="{% url 'socialauth_complete' "browserid" %}">
         <input type="hidden" name="assertion" value="" />
+        {% if redirect_to %}
+            <input type="hidden" name="{{ REDIRECT_FIELD_NAME }}" value="{{ redirect_to }}" />
+        {% endif %}
         <button class="persona-button" id="browserid"><span>Sign in with Persona</span></button>
     </form>
 </body>
