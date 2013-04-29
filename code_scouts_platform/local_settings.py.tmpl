@@ -1,0 +1,20 @@
+DEBUG=TEMPLATE_DEBUG=True
+
+SECRET_KEY = 'w3+ewam+w_&amp;v-i!asjg^5(a)*+$h7nmja0^w1rhv6qeoipsayp'
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'devdb.sqlite',                 # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+
+ADMINS = (
+    ('Kevin Turner', 'kevin@codescouts.org'),
+)
+MANAGERS = ADMINS

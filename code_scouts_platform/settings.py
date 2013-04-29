@@ -3,22 +3,29 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    ('Kevin Turner', 'kevin@codescouts.org'),
-)
 
-MANAGERS = ADMINS
-
+# This is set in local settings so you don't deploy with the repo one
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'devdb.sqlite',                 # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                 # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+SECRET_KEY = ''
+ADMINS = MANAGERS = []
+### end of things that should be set in local_settings
+
+ROOT_URLCONF = 'code_scouts_platform.urls'
+
+import os
+ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
+
+DEBUG = TEMPLATE_DEBUG = False
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -50,13 +57,13 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(ROOT_DIR, 'static_collected')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -67,6 +74,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(ROOT_DIR, "static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -76,9 +84,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'w3+ewam+w_&amp;v-i!asjg^5(a)*+$h7nmja0^w1rhv6qeoipsayp'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -97,7 +102,6 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'code_scouts_platform.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'code_scouts_platform.wsgi.application'
@@ -159,3 +163,17 @@ TEST_RUNNER='discover_runner.DiscoverRunner'
 # Configuration for Code Scouts "Events" app:
 CS_GOOGLE_CALENDAR = \
     'codescouts.org_oopaaknq7hjterl84hgpv28t8g%40group.calendar.google.com'
+
+
+
+try:
+    from local_settings import *
+except ImportError:
+    print ("No local settings found, or it errored")
+
+try:
+    MIDDLEWARE_CLASSES += tuple(LOCAL_MIDDLEWARE)
+except NameError: pass
+try:
+    INSTALLED_APPS += tuple(LOCAL_APPS)
+except NameError: pass
